@@ -1,8 +1,14 @@
 {
-	"devDependencies": {
-		"@types/node": "^24.2.1",
-		"prisma": "^6.13.0",
-		"ts-node": "^10.9.2",
-		"typescript": "^5.9.2"
-	}
+  "scripts": {
+    "ayo": "ts-node src/server.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "prisma": "^6.13.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
