@@ -13,3 +13,39 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  email     String    @unique
+  name      String
+  password  String
+  Product   Product[]
+}
+
+model Product {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  name        String @db.VarChar(255)
+  belongsToId String
+  belongs     User   @relation(fields: [belongsToId], references: [id])
+}
+
+enum UPDATE_STATUSES {
+  IN_PROGRESS
+  SHIPPED
+  DEPRECATED
+}
+
+model UPDATE {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  email     String   @unique
+
+  title   String
+  body    String
+  status  UPDATE_STATUSES
+  version String?
+  asset   String?
+}
